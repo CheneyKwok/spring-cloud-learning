@@ -1,0 +1,13 @@
+server:
+  port: 2000
+spring:
+  application:
+    name: ribbon-service
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+service-url:
+  user-service: http://user-service

@@ -1,8 +1,6 @@
 package com.gzc.cloud.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 public class CommonResult<T> {
     private T data;

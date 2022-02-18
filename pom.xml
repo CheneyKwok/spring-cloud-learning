@@ -14,12 +14,14 @@
         <module>eureka-security-server</module>
         <module>user-service</module>
         <module>ribbon-service</module>
+        <module>hystrix-service</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <hutool.version>5.4.0</hutool.version>
     </properties>
 
     <parent>
@@ -37,6 +39,11 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
         </dependencies>
 
@@ -56,9 +63,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
     </dependencies>
-
-
 
 
 </project>

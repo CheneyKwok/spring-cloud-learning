@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ribbon-service" />
+        <module name="hystrix-service" />
         <module name="eureka-security-server" />
         <module name="user-service" />
         <module name="eureka-client" />
@@ -20,6 +21,7 @@
       <module name="eureka-client" options="-parameters" />
       <module name="eureka-security-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="hystrix-service" options="-parameters" />
       <module name="ribbon-service" options="-parameters" />
       <module name="spring-cloud-learning" options="-parameters" />
       <module name="user-service" options="-parameters" />

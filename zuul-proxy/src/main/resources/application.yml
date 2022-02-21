@@ -1,0 +1,31 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: zuul-proxy
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+
+zuul:
+  routes:
+    user-service:
+      path: /userService/**
+    feign-service:
+      path: /feignService/**
+  prefix: /proxy # \u7ED9\u7F51\u5173\u8DEF\u7531\u6DFB\u52A0\u524D\u7F00
+  sensitive-headers: Cookie, Set-Cookie, Authorization # \u914D\u7F6E\u8FC7\u6EE4\u654F\u611F\u7684\u8BF7\u6C42\u5934\u4FE1\u606F\uFF0C\u8BBE\u7F6E\u4E3A\u7A7A\u5C31\u4E0D\u4F1A\u8FC7\u6EE4
+  add-host-header: true # \u8BBE\u7F6E\u4E3A true \u5219\u91CD\u5B9A\u5411\u65F6\u4F1A\u6DFB\u52A0 host \u8BF7\u6C42\u5934
+  PreLogFilter:
+    pre:
+      disable: false # \u63A7\u5236\u662F\u5426\u542F\u7528\u8FC7\u6EE4\u5668
+#  ignored-services: user-service, feign-service # \u5FFD\u7565\u9ED8\u8BA4\u8DEF\u7531\u914D\u7F6E
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          'routes'

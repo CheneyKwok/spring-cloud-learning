@@ -1,0 +1,21 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/CheneyKwok/spring-cloud-learning.git
+          clone-on-start: true
+  security:
+    user:
+      name: guo
+      password: 123
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:1000/eureka

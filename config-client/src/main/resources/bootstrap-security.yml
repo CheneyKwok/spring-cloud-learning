@@ -1,0 +1,17 @@
+server:
+  port: 10001
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: http://localhost:9000
+      name: config
+      username: guo
+      password: 123
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

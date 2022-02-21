@@ -1,6 +1,8 @@
 package com.gzc.cloud.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +23,3 @@ public class CommonResult<T> {
         this(data, "操作成功", 200);
     }
 }
-

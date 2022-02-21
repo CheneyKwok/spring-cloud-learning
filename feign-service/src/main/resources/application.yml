@@ -1,0 +1,17 @@
+server:
+  port: 6000
+spring:
+  application:
+    name: feign-service
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+feign:
+  hystrix:
+    enabled: true
+logging:
+  level:
+    com.gzc.cloud.service.UserService: debug

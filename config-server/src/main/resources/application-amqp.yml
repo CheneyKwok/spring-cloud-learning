@@ -1,0 +1,30 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/CheneyKwok/spring-cloud-learning.git
+          clone-on-start: true
+          username: guozhicheng
+          password: 123456
+  rabbitmq: # rabbitmq 配置
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+management: # 暴露 bus 刷新配置的端点
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'

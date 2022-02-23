@@ -16,6 +16,13 @@
         <module>ribbon-service</module>
         <module>hystrix-service</module>
         <module>hystrix-dashboard</module>
+        <module>turbine-service</module>
+        <module>zuul-proxy</module>
+        <module>feign-service</module>
+        <module>config-client</module>
+        <module>config-server</module>
+        <module>config-security-server</module>
+        <module>api-gateway</module>
     </modules>
 
     <properties>
@@ -51,10 +58,10 @@
     </dependencyManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

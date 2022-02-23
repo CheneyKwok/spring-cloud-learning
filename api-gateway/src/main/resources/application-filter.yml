@@ -1,0 +1,63 @@
+server:
+  port: 10002
+service-url:
+  user-service: http://localhost:2001
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  cloud:
+    gateway:
+      routes:
+#        - id: add_request_parameter_route
+#          uri: ${service-url.user-service}
+#          filters: # 给请求添加参数的过滤器(关闭 Java Bean 的配置)
+#            - AddRequestParameter=username, aaa
+#          predicates:
+#            - Method=GET
+#        - id: strip_prefix_route
+#          uri: ${service-url.user-service}
+#          filters: # 对指定数量的路径前缀进行去除的过滤器
+#            - StripPrefix=2
+#          predicates:
+#            - Path=/user-service/**
+#        - id: prefix_path_route
+#          uri: ${service-url.user-service}
+#          filters: # 与StripPrefix过滤器恰好相反，会对原有路径进行增加操作的过滤
+#            - PrefixPath=/user
+#          predicates:
+#            - Path=/**
+#        - id: hystrix_route
+#          uri: ${service-url.user-service}
+#          filters: # 当路由出错时会转发到服务降级处理的控制器上
+#            - name: Hystrix
+#              args:
+#                name: fallbackcmd
+#                fallBackUri: forward:/fallback
+#          predicates:
+#            - Method=GET
+#        - id: requestratelimiter_route
+#          uri: ${service-url.user-service}
+#          filters: # 限流过滤器
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 1 #每秒允许处理的请求数
+#                redis-rate-limiter.burstCapacity: 1 #每秒最大处理的请求数
+#                key-resolver: "#{@ipKeyResolver}"
+#                fallBackUri: forward:/fallback
+#          predicates:
+#            - Method=GET
+        - id: retry_route
+          uri: ${service-url.user-service}
+          filters: # 限流过滤器
+            - name: Retry
+              args:
+                retries: 1 #每秒允许处理的请求数
+                statuses: BAD_GATEWAY #返回哪个状态码需要进行重试，返回码为 5XX 进行重试
+                backoff:
+                  firstBackoff: 10ms
+                  maxBackoff: 50ms
+                  factor: 2
+                  basedOnPreviousValue: false
+          predicates:
+            - Method=GET

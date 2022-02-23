@@ -1,0 +1,27 @@
+server:
+  port: 10003
+service-url:
+  user-service: http://localhost:2001
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: lb://user-service # lb 开启负载均衡功能
+          predicates:
+            - Path=/user/{id}
+      discovery:
+        locator:
+          enabled: true # 是否结合服务注册与发现组件自动根据 serviceId 创建路由
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'gateway' # 暴露路由监控点

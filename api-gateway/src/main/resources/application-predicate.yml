@@ -1,0 +1,54 @@
+server:
+  port: 10001
+service-url:
+  user-service: http://localhost:2001
+spring:
+  cloud:
+    gateway:
+      routes:
+#        - id: after_route
+#          uri: ${service-url.user-service}
+#          predicates: # 在指定时间之后的请求会匹配该路由
+#            - After=2022-02-22T16:30:00+08:00[Asia/Shanghai]
+#        - id: before_route
+#          uri: ${service-url.user-service}
+#          predicates: # 在指定时间之前的请求会匹配该路由
+#            - Before=2022-02-24T16:30:00+08:00[Asia/Shanghai]
+        - id: between_route
+          uri: ${service-url.user-service}
+          predicates: # 在指定时间内的请求会匹配该路由
+            - Between=2022-02-22T16:30:00+08:00[Asia/Shanghai], 2022-02-24T16:30:00+08:00[Asia/Shanghai]
+        - id: cookie_route
+          uri: ${service-url.user-service}
+          predicates: # 带有指定Cookie的请求会匹配该路由
+            - Cookie=username,aaa
+        - id: header_route
+          uri: ${service-url.user-service}
+          predicates: # 带有指定请求头的请求会匹配该路由
+            - Header=X-Request-Id, \d+
+        - id: host_route
+          uri: ${service-url.user-service}
+          predicates: # 带有指定Host的请求会匹配该路由
+            - Host=**.test.com
+        - id: method_route
+          uri: ${service-url.user-service}
+          predicates: # 带有指定方法的请求会匹配该路由
+            - Method=GET
+        - id: query_route
+          uri: ${service-url.user-service}
+          predicates: # 带有指定查询参数的请求会匹配该路由
+            - Query=username
+        - id: remoteadd_route
+          uri: ${service-url.user-service}
+          predicates: # 从指定远程地址发送的请求会匹配该路由
+            - RemoteAdder=X-Request-Id, \d+
+         # 使用权重来路由相应请求
+        - id: weight_high_route
+          uri: http://localhost:2001
+          predicates: # 80%的请求会被路由到localhost:2001
+            - Weight=group1, 8
+        - id: weight_low_route
+          uri: http://localhost:2002
+          predicates: # 20%的请求会被路由到localhost:2002
+            - Weight=group1, 2
+

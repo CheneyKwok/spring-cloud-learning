@@ -1,0 +1,17 @@
+server:
+  port: 13000
+spring:
+  application:
+    name: admin-security-server
+  security:
+    user:
+      name: guo
+      password: 123
+  boot:
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka

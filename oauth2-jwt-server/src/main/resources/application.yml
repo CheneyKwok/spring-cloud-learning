@@ -1,0 +1,8 @@
+server:
+  port: 15000
+spring:
+  application:
+    name: oauth2-server
+logging:
+  level:
+    org.springframework.security: debug

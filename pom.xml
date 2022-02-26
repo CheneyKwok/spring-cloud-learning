@@ -27,13 +27,17 @@
         <module>admin-client</module>
         <module>admin-security-server</module>
         <module>oauth2-server</module>
-        <module>oauth2-client</module>
+        <module>nacos-config-client</module>
+        <module>nacos-user-service</module>
+        <module>nacos-ribbon-service</module>
+        <module>sentinel-service</module>
     </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version> <!-- Spring Boot Admin 版本需对应 Spring Boot-->
         <hutool.version>5.4.0</hutool.version>
     </properties>
@@ -57,7 +61,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

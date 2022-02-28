@@ -27,10 +27,13 @@
         <module>admin-client</module>
         <module>admin-security-server</module>
         <module>oauth2-server</module>
+        <module>oauth2-client</module>
+        <module>oauth2-jwt-server</module>
         <module>nacos-config-client</module>
         <module>nacos-user-service</module>
         <module>nacos-ribbon-service</module>
         <module>sentinel-service</module>
+        <module>seata-order-service</module>
     </modules>
 
     <properties>
@@ -40,6 +43,10 @@
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <spring-boot-admin.version>2.2.1</spring-boot-admin.version> <!-- Spring Boot Admin 版本需对应 Spring Boot-->
         <hutool.version>5.4.0</hutool.version>
+        <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+        <mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
+        <druid-spring-boot-starter.version>1.2.4</druid-spring-boot-starter.version>
+        <seata.version>1.4.2</seata.version>
     </properties>
 
     <parent>
@@ -79,6 +86,31 @@
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring-boot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-all</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
             </dependency>
 
         </dependencies>

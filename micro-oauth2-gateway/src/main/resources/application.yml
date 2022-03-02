@@ -1,0 +1,37 @@
+server:
+  port: 25000
+spring:
+  application:
+    name: micro-oauth2-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 1.15.156.232:8848
+    gateway:
+      routes:
+        - id: oauth2-api-route
+          uri: lb://micro-oauth2-api
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+        - id: oauth2-auth-route
+          uri: lb://micro-oauth2-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true # \u5F00\u542F\u4ECE\u6CE8\u518C\u4E2D\u5FC3\u52A8\u6001\u521B\u5EFA\u8DEF\u7531\u7684\u529F\u80FD
+          lower-case-service-id: true # \u4F7F\u7528\u5C0F\u5199\u670D\u52A1\u540D\uFF0C\u9ED8\u8BA4\u662F\u5927\u5199
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: localhost:24000/rsa/publicKey
+secure:
+  ignore:
+    urls: #\u914D\u7F6E\u767D\u540D\u5355\u8DEF\u5F84
+      - "/actuator/**"
+      - "/auth/oauth/token"

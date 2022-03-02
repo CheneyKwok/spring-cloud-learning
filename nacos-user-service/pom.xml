@@ -6,7 +6,6 @@
         <groupId>com.gzc</groupId>
         <artifactId>spring-cloud-learning</artifactId>
         <version>1.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>nacos-user-service</artifactId>
     <description>注册到 nacos 用于提供 User 对象 CRUD 接口的服务</description>

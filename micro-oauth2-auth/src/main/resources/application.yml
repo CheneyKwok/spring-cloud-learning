@@ -1,0 +1,21 @@
+server:
+  port: 24000
+spring:
+  application:
+    name: micro-oauth2-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 1.15.156.232:8848
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    org:
+      springframework:
+        security: debug
